@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>Proxy管理</title>
+</head>
+
+<body>
+<div class="contentDiv">
+
+    <h5>《Proxy》Demo </h5>
+
+    <legend>
+        <strong>Proxy管理</strong>
+    </legend>
+
+    <form th:action="@{/proxy/{action}(action=${action})}" method="post" class="form-horizontal">
+
+        <input type="hidden" name="id" th:value="${proxy.key}"/>
+
+        <div class="form-group">
+            <label for="book_name" class="col-sm-2 control-label">传输端口:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="transPort" name="transPort" th:value="${proxy.transPort}"
+                       th:field="*{proxy.transPort}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="book_writer" class="col-sm-2 control-label">本地端口:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="localPort" name="localPort" th:value="${proxy.localPort}"
+                       th:field="*{proxy.localPort}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="book_name" class="col-sm-2 control-label">远程地址:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="remoteHost" name="remoteHost" th:value="${proxy.remoteHost}"
+                       th:field="*{proxy.remoteHost}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="book_writer" class="col-sm-2 control-label">远程端口:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="remotePort" name="remotePort" th:value="${proxy.remotePort}"
+                       th:field="*{proxy.remotePort}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="book_name" class="col-sm-2 control-label">远程用户:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="remoteUser" name="remoteUser" th:value="${proxy.remoteUser}"
+                       th:field="*{proxy.remoteUser}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="book_writer" class="col-sm-2 control-label">远程密码:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="remotePasswd" name="remotePasswd" th:value="${proxy.remotePasswd}"
+                       th:field="*{proxy.remotePasswd}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="book_introduction" class="col-sm-2 control-label">代理地址:</label>
+            <div class="col-xs-4">
+                <input class="form-control" id="proxyHost" name="proxyHost"
+                          th:value="${proxy.proxyHost}" th:field="*{proxy.proxyHost}"></input>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="book_introduction" class="col-sm-2 control-label">代理端口:</label>
+            <div class="col-xs-4">
+                <input class="form-control" id="proxyPort" name="proxyPort"
+                          th:value="${proxy.proxyPort}" th:field="*{proxy.proxyPort}"></input>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="book_introduction" class="col-sm-2 control-label">代理用户:</label>
+            <div class="col-xs-4">
+                <input class="form-control" id="proxyUser" name="proxyUser"
+                          th:value="${proxy.proxyUser}" th:field="*{proxy.proxyUser}"></input>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="book_introduction" class="col-sm-2 control-label">代理密码:</label>
+            <div class="col-xs-4">
+                <input class="form-control" id="proxyPasswd" name="proxyPasswd"
+                          th:value="${proxy.proxyPasswd}" th:field="*{proxy.proxyPasswd}"></input>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input class="btn btn-primary" type="submit" value="提交"/>&nbsp;&nbsp;
+                <input class="btn" type="button" value="返回" onclick="history.back()"/>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

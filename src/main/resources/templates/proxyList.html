@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>Proxy列表</title>
+</head>
+
+<body>
+
+<div class="contentDiv">
+
+    <h5> 《Proxy Socks5》 </h5>
+
+    <table class="table table-hover table-condensed">
+        <legend>
+            <strong>Proxy列表</strong>
+        </legend>
+        <thead>
+        <tr>
+            <th>Key</th>
+
+            <th>本地端口</th>
+            <th>传输端口</th>
+
+            <th>远程地址</th>
+            <th>远程端口</th>
+            <th>远程用户</th>
+            <th>远程密码</th>
+
+            <th>代理地址</th>
+            <th>代理端口</th>
+            <th>代理用户</th>
+            <th>代理密码</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="d : ${proxyList}">
+            <th scope="row" th:text="${d.key}"></th>
+            <td th:text="${d.localPort}"></td>
+            <td th:text="${d.transPort}"></td>
+            <td th:text="${d.remoteHost}"></a></td>
+            <td th:text="${d.remotePort}"></td>
+            <td th:text="${d.remoteUser}"></td>
+            <td th:text="${d.remotePasswd}"></td>
+            <td th:text="${d.proxyHost}"></td>
+            <td th:text="${d.proxyPort}"></td>
+            <td th:text="${d.proxyUser}"></td>
+            <td th:text="${d.proxyPasswd}"></td>
+
+            <td><a class="btn btn-danger" th:href="@{/proxy/delete/{proxyId}(proxyId=${d.key})}">销毁</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div><a class="btn btn-primary" href="/proxy/create" role="button">新增代理</a></div>
+</div>
+
+</body>
+</html>
+
+
